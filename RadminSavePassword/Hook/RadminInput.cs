@@ -168,10 +168,16 @@ namespace RadminSavePassword.Hook
             }
         }
 
+        /// <summary>
+        /// 提取界面服务器信息
+        /// </summary>
+        /// <param name="controlHandle">窗体控件句柄数据</param>
+        /// <param name="serverName">服务器名称</param>
+        /// <returns></returns>
         protected virtual ServerInfo PickUpServerInfo(ControlHandle controlHandle, string serverName)
         {
             int defaultCheckValue = (int)WindowsApi.SendMessage(controlHandle.DefaultCheckHandle, WindowsApi.BM_GETCHECK, 1024, (string)null);
-            if (defaultCheckValue == WindowsApi.BST_CHECKED) return null;
+            if (defaultCheckValue != WindowsApi.BST_CHECKED) return null;
 
             ServerInfo serverInfo = new ServerInfo();
             serverInfo.Name = serverName;
@@ -233,15 +239,34 @@ namespace RadminSavePassword.Hook
             return controlHandle;
         }
 
+        /// <summary>
+        /// 窗体控件句柄数据
+        /// </summary>
         protected class ControlHandle
         {
+            /// <summary>
+            /// 父窗体句柄
+            /// </summary>
             public IntPtr ParentHandle { get; set; }
-
+            /// <summary>
+            /// 用户名TextBox句柄
+            /// </summary>
             public IntPtr UsernameHandle { get; set; }
+            /// <summary>
+            /// 密码TextBox句柄
+            /// </summary>
             public IntPtr PasswordHandle { get; set; }
+            /// <summary>
+            /// 缺省值CheckBox句柄
+            /// </summary>
             public IntPtr DefaultCheckHandle { get; set; }
-
+            /// <summary>
+            /// 确认Button句柄
+            /// </summary>
             public IntPtr OkButtonHandle { get; set; }
+            /// <summary>
+            /// 取消Button句柄
+            /// </summary>
             public IntPtr CancelButtonHandle { get; set; }
         }
     }

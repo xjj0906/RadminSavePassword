@@ -63,7 +63,7 @@
             this.btnStart.TabIndex = 0;
             this.btnStart.Text = "启动";
             this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.btnStart, "启动后，程序会自动记录Radmin中输入的用户名和密码");
+            this.toolTip1.SetToolTip(this.btnStart, "启动后，当Radmin中勾选了\"另存为缺省值\"时，程序会自动记录用户名和密码");
             this.btnStart.UseVisualStyleBackColor = true;
             // 
             // imgListSmall
