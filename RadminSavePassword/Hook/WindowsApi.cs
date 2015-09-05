@@ -42,6 +42,8 @@ namespace RadminSavePassword.Hook
 
         public const long ES_PASSWORD = 0x0020L;
 
+        public const int SW_SHOWNOMAL = 1;
+
         [DllImport("user32.dll")]
         public static extern long SendMessage(IntPtr childHandle, int msg, int lParam, string wParam);
 
@@ -62,6 +64,9 @@ namespace RadminSavePassword.Hook
 
         [DllImport("user32.dll")]
         public static extern bool GetWindowText(IntPtr hWnd, StringBuilder lpString, int cch);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
 
         [DllImport("user32.dll")]
         public static extern IntPtr FindWindowEx(IntPtr hwndParent, IntPtr hwndChildAfter, string lpszClass, string lpszWindow);
@@ -92,6 +97,12 @@ namespace RadminSavePassword.Hook
 
         [DllImport("user32.dll")]
         public static extern long SetWindowWord(IntPtr hWnd, int nlndex, long wNewWord);
+
+        [DllImport("user32.dll")]
+        public static extern IntPtr SetForegroundWindow(IntPtr hwnd);
+
+        [DllImport("User32.dll")]
+        public static extern bool ShowWindowAsync(IntPtr hWnd, int lParam);
 
         [DllImport("user32.dll")]
         public static extern IntPtr GetForegroundWindow();

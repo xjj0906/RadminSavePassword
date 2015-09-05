@@ -26,6 +26,8 @@ namespace RadminSavePassword
         {
             base.OnLoad(e);
 
+            Text = Global.ProgramText;
+
             LoadConfig();
 
             btnStop.Enabled = false;

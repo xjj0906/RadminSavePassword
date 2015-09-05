@@ -148,14 +148,19 @@ namespace RadminSavePassword.Hook
             }
         }
 
-        protected virtual void OnPaddingProcess(IntPtr handle, string name)
+        /// <summary>
+        /// 填充主窗体信息
+        /// </summary>
+        /// <param name="handle">主窗体句柄</param>
+        /// <param name="serverName">服务器名称</param>
+        protected virtual void OnPaddingProcess(IntPtr handle, string serverName)
         {
             ControlHandle controlHandle = GetControlHandle(handle);
             _activeControlHandle = controlHandle;
 
-            if (Global.SystemConfig.ServerList.ContainsKey(name))
+            if (Global.SystemConfig.ServerList.ContainsKey(serverName))
             {
-                ServerInfo serverInfo = Global.SystemConfig.ServerList[name];
+                ServerInfo serverInfo = Global.SystemConfig.ServerList[serverName];
 
                 WindowsApi.SendMessage(controlHandle.UsernameHandle, WindowsApi.WM_SETTEXT, 1024, serverInfo.UserName);
                 WindowsApi.SendMessage(controlHandle.PasswordHandle, WindowsApi.WM_SETTEXT, 1024, serverInfo.Password);
@@ -208,6 +213,11 @@ namespace RadminSavePassword.Hook
             Stop();
         }
 
+        /// <summary>
+        /// 获取主窗体中子控件句柄
+        /// </summary>
+        /// <param name="handle">主窗体句柄</param>
+        /// <returns></returns>
         protected ControlHandle GetControlHandle(IntPtr handle)
         {
             ControlHandle controlHandle = new ControlHandle();
