@@ -37,11 +37,9 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.cbAutoEnter = new System.Windows.Forms.CheckBox();
-            this.btnOpen = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
             this.notifyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -50,12 +48,14 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnOpen = new System.Windows.Forms.Button();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.notifyMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnStart
             // 
-            this.btnStart.ImageKey = "lightbulb_32.png";
+            this.btnStart.ImageKey = "tag.png";
             this.btnStart.ImageList = this.imgListSmall;
             this.btnStart.Location = new System.Drawing.Point(12, 12);
             this.btnStart.Name = "btnStart";
@@ -70,23 +70,16 @@
             // 
             this.imgListSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListSmall.ImageStream")));
             this.imgListSmall.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListSmall.Images.SetKeyName(0, "lightbulb_32.png");
-            this.imgListSmall.Images.SetKeyName(1, "lightbulb_off_32.png");
-            this.imgListSmall.Images.SetKeyName(2, "screen_32.png");
-            this.imgListSmall.Images.SetKeyName(3, "screen_off_32.png");
-            this.imgListSmall.Images.SetKeyName(4, "star_32.png");
-            this.imgListSmall.Images.SetKeyName(5, "star_off_32.png");
-            this.imgListSmall.Images.SetKeyName(6, "web_layout_error_32.png");
-            this.imgListSmall.Images.SetKeyName(7, "web_layout_error_32_close.png");
-            this.imgListSmall.Images.SetKeyName(8, "page_blank_32.png");
-            this.imgListSmall.Images.SetKeyName(9, "page_blank_add_32.png");
-            this.imgListSmall.Images.SetKeyName(10, "page_blank_chart_32.png");
-            this.imgListSmall.Images.SetKeyName(11, "page_blank_close_32.png");
-            this.imgListSmall.Images.SetKeyName(12, "page_blank_warning_32.png");
+            this.imgListSmall.Images.SetKeyName(0, "device-laptop.png");
+            this.imgListSmall.Images.SetKeyName(1, "sign-add.png");
+            this.imgListSmall.Images.SetKeyName(2, "sign-delete.png");
+            this.imgListSmall.Images.SetKeyName(3, "sign-info.png");
+            this.imgListSmall.Images.SetKeyName(4, "tag.png");
+            this.imgListSmall.Images.SetKeyName(5, "tag-alt.png");
             // 
             // btnStop
             // 
-            this.btnStop.ImageKey = "lightbulb_off_32.png";
+            this.btnStop.ImageKey = "tag-alt.png";
             this.btnStop.ImageList = this.imgListSmall;
             this.btnStop.Location = new System.Drawing.Point(93, 12);
             this.btnStop.Name = "btnStop";
@@ -132,21 +125,9 @@
             this.columnHeader3.Text = "密码";
             this.columnHeader3.Width = 94;
             // 
-            // btnAdd
-            // 
-            this.btnAdd.ImageKey = "page_blank_add_32.png";
-            this.btnAdd.ImageList = this.imgListSmall;
-            this.btnAdd.Location = new System.Drawing.Point(12, 48);
-            this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(75, 30);
-            this.btnAdd.TabIndex = 4;
-            this.btnAdd.Text = "添加";
-            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnAdd.UseVisualStyleBackColor = true;
-            // 
             // btnEdit
             // 
-            this.btnEdit.ImageKey = "page_blank_chart_32.png";
+            this.btnEdit.ImageKey = "sign-info.png";
             this.btnEdit.ImageList = this.imgListSmall;
             this.btnEdit.Location = new System.Drawing.Point(93, 48);
             this.btnEdit.Name = "btnEdit";
@@ -158,7 +139,7 @@
             // 
             // btnDelete
             // 
-            this.btnDelete.ImageKey = "page_blank_close_32.png";
+            this.btnDelete.ImageKey = "sign-delete.png";
             this.btnDelete.ImageList = this.imgListSmall;
             this.btnDelete.Location = new System.Drawing.Point(174, 48);
             this.btnDelete.Name = "btnDelete";
@@ -178,17 +159,6 @@
             this.cbAutoEnter.Text = "自动确定";
             this.toolTip1.SetToolTip(this.cbAutoEnter, "Radmin界面中自动填充登陆信息后回车");
             this.cbAutoEnter.UseVisualStyleBackColor = true;
-            // 
-            // btnOpen
-            // 
-            this.btnOpen.Image = ((System.Drawing.Image)(resources.GetObject("btnOpen.Image")));
-            this.btnOpen.Location = new System.Drawing.Point(286, 12);
-            this.btnOpen.Name = "btnOpen";
-            this.btnOpen.Size = new System.Drawing.Size(86, 66);
-            this.btnOpen.TabIndex = 8;
-            this.btnOpen.Text = "打开Radmin";
-            this.btnOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
-            this.btnOpen.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -220,12 +190,14 @@
             // 
             // 启动BToolStripMenuItem
             // 
+            this.启动BToolStripMenuItem.Image = global::RadminSavePassword.Properties.Resources.tag;
             this.启动BToolStripMenuItem.Name = "启动BToolStripMenuItem";
             this.启动BToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.启动BToolStripMenuItem.Text = "启动(&B)";
             // 
             // 停止EToolStripMenuItem
             // 
+            this.停止EToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("停止EToolStripMenuItem.Image")));
             this.停止EToolStripMenuItem.Name = "停止EToolStripMenuItem";
             this.停止EToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.停止EToolStripMenuItem.Text = "停止(&E)";
@@ -237,6 +209,7 @@
             // 
             // 退出XToolStripMenuItem
             // 
+            this.退出XToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("退出XToolStripMenuItem.Image")));
             this.退出XToolStripMenuItem.Name = "退出XToolStripMenuItem";
             this.退出XToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.退出XToolStripMenuItem.Text = "退出(&X)";
@@ -246,6 +219,29 @@
             this.toolTip1.AutoPopDelay = 5000;
             this.toolTip1.InitialDelay = 200;
             this.toolTip1.ReshowDelay = 100;
+            // 
+            // btnOpen
+            // 
+            this.btnOpen.Image = global::RadminSavePassword.Properties.Resources.btnOpen_Image;
+            this.btnOpen.Location = new System.Drawing.Point(286, 12);
+            this.btnOpen.Name = "btnOpen";
+            this.btnOpen.Size = new System.Drawing.Size(86, 66);
+            this.btnOpen.TabIndex = 8;
+            this.btnOpen.Text = "打开Radmin";
+            this.btnOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.btnOpen.UseVisualStyleBackColor = true;
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.ImageKey = "sign-add.png";
+            this.btnAdd.ImageList = this.imgListSmall;
+            this.btnAdd.Location = new System.Drawing.Point(12, 48);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(75, 30);
+            this.btnAdd.TabIndex = 4;
+            this.btnAdd.Text = "添加";
+            this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnAdd.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 

@@ -228,7 +228,7 @@ namespace RadminSavePassword
 
         private void UpdateListViewItem(ServerInfo serverInfo, ListViewItem item)
         {
-            item.ImageKey = "screen_32.png";
+            item.ImageKey = "device-laptop.png";
             item.Text = serverInfo.Name;
             item.SubItems[1].Text = serverInfo.UserName;
             item.SubItems[2].Text = serverInfo.Password.Length == 0 ? "(无)" : "*****";
