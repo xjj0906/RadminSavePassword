@@ -228,10 +228,11 @@ namespace RadminSavePassword
 
         private void UpdateListViewItem(ServerInfo serverInfo, ListViewItem item)
         {
-            item.ImageKey = "device-laptop.png";
+            item.ImageKey = serverInfo.LoginType == LoginType.Radmin ? "device-laptop-R.png" : "device-laptop-W.png";
             item.Text = serverInfo.Name;
             item.SubItems[1].Text = serverInfo.UserName;
             item.SubItems[2].Text = serverInfo.Password.Length == 0 ? "(无)" : "*****";
+            item.SubItems[3].Text = serverInfo.Domain;
             item.Tag = serverInfo;
         }
 

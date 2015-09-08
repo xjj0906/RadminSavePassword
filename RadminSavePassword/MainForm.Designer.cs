@@ -30,15 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
-            this.btnStart = new System.Windows.Forms.Button();
             this.imgListSmall = new System.Windows.Forms.ImageList(this.components);
-            this.btnStop = new System.Windows.Forms.Button();
             this.listView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnEdit = new System.Windows.Forms.Button();
-            this.btnDelete = new System.Windows.Forms.Button();
+            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cbAutoEnter = new System.Windows.Forms.CheckBox();
             this.label1 = new System.Windows.Forms.Label();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
@@ -48,46 +45,26 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.退出XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btnStart = new System.Windows.Forms.Button();
             this.btnOpen = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.btnStop = new System.Windows.Forms.Button();
             this.notifyMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // btnStart
-            // 
-            this.btnStart.ImageKey = "tag.png";
-            this.btnStart.ImageList = this.imgListSmall;
-            this.btnStart.Location = new System.Drawing.Point(12, 12);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(75, 30);
-            this.btnStart.TabIndex = 0;
-            this.btnStart.Text = "启动";
-            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.toolTip1.SetToolTip(this.btnStart, "启动后，当Radmin中勾选了\"另存为缺省值\"时，程序会自动记录用户名和密码");
-            this.btnStart.UseVisualStyleBackColor = true;
             // 
             // imgListSmall
             // 
             this.imgListSmall.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imgListSmall.ImageStream")));
             this.imgListSmall.TransparentColor = System.Drawing.Color.Transparent;
-            this.imgListSmall.Images.SetKeyName(0, "device-laptop.png");
-            this.imgListSmall.Images.SetKeyName(1, "sign-add.png");
-            this.imgListSmall.Images.SetKeyName(2, "sign-delete.png");
-            this.imgListSmall.Images.SetKeyName(3, "sign-info.png");
-            this.imgListSmall.Images.SetKeyName(4, "tag.png");
-            this.imgListSmall.Images.SetKeyName(5, "tag-alt.png");
-            // 
-            // btnStop
-            // 
-            this.btnStop.ImageKey = "tag-alt.png";
-            this.btnStop.ImageList = this.imgListSmall;
-            this.btnStop.Location = new System.Drawing.Point(93, 12);
-            this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(75, 30);
-            this.btnStop.TabIndex = 1;
-            this.btnStop.Text = "停止";
-            this.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnStop.UseVisualStyleBackColor = true;
+            this.imgListSmall.Images.SetKeyName(0, "sign-add.png");
+            this.imgListSmall.Images.SetKeyName(1, "sign-delete.png");
+            this.imgListSmall.Images.SetKeyName(2, "sign-info.png");
+            this.imgListSmall.Images.SetKeyName(3, "tag.png");
+            this.imgListSmall.Images.SetKeyName(4, "tag-alt.png");
+            this.imgListSmall.Images.SetKeyName(5, "device-laptop-R.png");
+            this.imgListSmall.Images.SetKeyName(6, "device-laptop-W.png");
             // 
             // listView
             // 
@@ -97,7 +74,8 @@
             this.listView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3});
+            this.columnHeader3,
+            this.columnHeader4});
             this.listView.FullRowSelect = true;
             this.listView.GridLines = true;
             this.listView.HideSelection = false;
@@ -113,41 +91,22 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "名称";
-            this.columnHeader1.Width = 138;
+            this.columnHeader1.Width = 132;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "用户名";
-            this.columnHeader2.Width = 94;
+            this.columnHeader2.Width = 90;
             // 
             // columnHeader3
             // 
             this.columnHeader3.Text = "密码";
-            this.columnHeader3.Width = 94;
+            this.columnHeader3.Width = 43;
             // 
-            // btnEdit
+            // columnHeader4
             // 
-            this.btnEdit.ImageKey = "sign-info.png";
-            this.btnEdit.ImageList = this.imgListSmall;
-            this.btnEdit.Location = new System.Drawing.Point(93, 48);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(75, 30);
-            this.btnEdit.TabIndex = 5;
-            this.btnEdit.Text = "编辑";
-            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // btnDelete
-            // 
-            this.btnDelete.ImageKey = "sign-delete.png";
-            this.btnDelete.ImageList = this.imgListSmall;
-            this.btnDelete.Location = new System.Drawing.Point(174, 48);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(75, 30);
-            this.btnDelete.TabIndex = 6;
-            this.btnDelete.Text = "删除";
-            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDelete.UseVisualStyleBackColor = true;
+            this.columnHeader4.Text = "域名";
+            this.columnHeader4.Width = 69;
             // 
             // cbAutoEnter
             // 
@@ -197,7 +156,7 @@
             // 
             // 停止EToolStripMenuItem
             // 
-            this.停止EToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("停止EToolStripMenuItem.Image")));
+            this.停止EToolStripMenuItem.Image = global::RadminSavePassword.Properties.Resources.tag_alt;
             this.停止EToolStripMenuItem.Name = "停止EToolStripMenuItem";
             this.停止EToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.停止EToolStripMenuItem.Text = "停止(&E)";
@@ -209,7 +168,7 @@
             // 
             // 退出XToolStripMenuItem
             // 
-            this.退出XToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("退出XToolStripMenuItem.Image")));
+            this.退出XToolStripMenuItem.Image = global::RadminSavePassword.Properties.Resources.sign_ban;
             this.退出XToolStripMenuItem.Name = "退出XToolStripMenuItem";
             this.退出XToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.退出XToolStripMenuItem.Text = "退出(&X)";
@@ -219,6 +178,19 @@
             this.toolTip1.AutoPopDelay = 5000;
             this.toolTip1.InitialDelay = 200;
             this.toolTip1.ReshowDelay = 100;
+            // 
+            // btnStart
+            // 
+            this.btnStart.ImageKey = "tag.png";
+            this.btnStart.ImageList = this.imgListSmall;
+            this.btnStart.Location = new System.Drawing.Point(12, 12);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(75, 30);
+            this.btnStart.TabIndex = 0;
+            this.btnStart.Text = "启动";
+            this.btnStart.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.toolTip1.SetToolTip(this.btnStart, "启动后，当Radmin中勾选了\"另存为缺省值\"时，程序会自动记录用户名和密码");
+            this.btnStart.UseVisualStyleBackColor = true;
             // 
             // btnOpen
             // 
@@ -231,6 +203,30 @@
             this.btnOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOpen.UseVisualStyleBackColor = true;
             // 
+            // btnDelete
+            // 
+            this.btnDelete.ImageKey = "sign-delete.png";
+            this.btnDelete.ImageList = this.imgListSmall;
+            this.btnDelete.Location = new System.Drawing.Point(174, 48);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(75, 30);
+            this.btnDelete.TabIndex = 6;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDelete.UseVisualStyleBackColor = true;
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.ImageKey = "sign-info.png";
+            this.btnEdit.ImageList = this.imgListSmall;
+            this.btnEdit.Location = new System.Drawing.Point(93, 48);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 30);
+            this.btnEdit.TabIndex = 5;
+            this.btnEdit.Text = "编辑";
+            this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
             // btnAdd
             // 
             this.btnAdd.ImageKey = "sign-add.png";
@@ -242,6 +238,18 @@
             this.btnAdd.Text = "添加";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = true;
+            // 
+            // btnStop
+            // 
+            this.btnStop.ImageKey = "tag-alt.png";
+            this.btnStop.ImageList = this.imgListSmall;
+            this.btnStop.Location = new System.Drawing.Point(93, 12);
+            this.btnStop.Name = "btnStop";
+            this.btnStop.Size = new System.Drawing.Size(75, 30);
+            this.btnStop.TabIndex = 1;
+            this.btnStop.Text = "停止";
+            this.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStop.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -290,6 +298,7 @@
         private System.Windows.Forms.ToolStripMenuItem 停止EToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.ColumnHeader columnHeader4;
     }
 }
 

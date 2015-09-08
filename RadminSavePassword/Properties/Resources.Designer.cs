@@ -65,7 +65,7 @@ namespace RadminSavePassword.Properties {
         /// </summary>
         internal static System.Drawing.Bitmap btnOpen_Image {
             get {
-                object obj = ResourceManager.GetObject("btnOpen.Image", resourceCulture);
+                object obj = ResourceManager.GetObject("btnOpen_Image", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
