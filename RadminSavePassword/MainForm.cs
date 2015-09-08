@@ -254,13 +254,6 @@ namespace RadminSavePassword
             SystemConfig.Save(Global.SystemConfig, Path.Combine(_rootPath, ConfigName));
         }
 
-        protected override void OnFormClosing(FormClosingEventArgs e)
-        {
-            base.OnFormClosing(e);
-
-            _radminInput.Stop();
-        }
-
         protected override void OnSizeChanged(EventArgs e)
         {
             base.OnSizeChanged(e);
@@ -274,6 +267,11 @@ namespace RadminSavePassword
             {
                 this.Visible = false;
             }
+        }
+
+        ~MainForm()
+        {
+            _radminInput.Stop();
         }
     }
 }
