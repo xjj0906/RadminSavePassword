@@ -19,6 +19,9 @@ namespace RadminSavePassword
             Mutex mutexLock = new Mutex(true, Application.ProductName, out canCreateNew);
             if (canCreateNew)
             {
+                Application.ThreadException += Application_ThreadException;
+                Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+                AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
                 Application.Run(new MainForm());
@@ -30,6 +33,17 @@ namespace RadminSavePassword
                 IntPtr windowHandle = RuningWindow();//获取本程序的运行实例.
                 HandleRunningWindow(windowHandle);//激活该程序,并显示在最前端.
             }
+        }
+
+        static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            MessageBox.Show(string.Format("未处理的异常：{0}", e.Exception.Message), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            Exception ex = e.ExceptionObject as Exception;
+            MessageBox.Show(string.Format("未处理的异常：{0}", ex.Message), "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         /// <summary>
