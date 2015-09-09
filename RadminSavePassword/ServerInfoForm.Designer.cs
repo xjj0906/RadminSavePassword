@@ -49,7 +49,7 @@
             this.label1.Location = new System.Drawing.Point(26, 37);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 3;
             this.label1.Text = "名称";
             // 
             // txtName
@@ -57,14 +57,14 @@
             this.txtName.Location = new System.Drawing.Point(61, 34);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(211, 21);
-            this.txtName.TabIndex = 1;
+            this.txtName.TabIndex = 4;
             // 
             // txtUsername
             // 
             this.txtUsername.Location = new System.Drawing.Point(61, 61);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(211, 21);
-            this.txtUsername.TabIndex = 3;
+            this.txtUsername.TabIndex = 6;
             // 
             // label2
             // 
@@ -72,7 +72,7 @@
             this.label2.Location = new System.Drawing.Point(14, 64);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(41, 12);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 5;
             this.label2.Text = "用户名";
             // 
             // txtPassword
@@ -81,7 +81,7 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(211, 21);
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 8;
             // 
             // label3
             // 
@@ -89,7 +89,7 @@
             this.label3.Location = new System.Drawing.Point(26, 91);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 7;
             this.label3.Text = "密码";
             // 
             // btnOk
@@ -97,7 +97,7 @@
             this.btnOk.Location = new System.Drawing.Point(64, 142);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
-            this.btnOk.TabIndex = 6;
+            this.btnOk.TabIndex = 11;
             this.btnOk.Text = "确定";
             this.btnOk.UseVisualStyleBackColor = true;
             // 
@@ -107,7 +107,7 @@
             this.btnCancel.Location = new System.Drawing.Point(145, 142);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 7;
+            this.btnCancel.TabIndex = 12;
             this.btnCancel.Text = "取消";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
@@ -116,7 +116,7 @@
             this.txtDomain.Location = new System.Drawing.Point(61, 115);
             this.txtDomain.Name = "txtDomain";
             this.txtDomain.Size = new System.Drawing.Size(211, 21);
-            this.txtDomain.TabIndex = 9;
+            this.txtDomain.TabIndex = 10;
             // 
             // lbDomain
             // 
@@ -124,7 +124,7 @@
             this.lbDomain.Location = new System.Drawing.Point(26, 118);
             this.lbDomain.Name = "lbDomain";
             this.lbDomain.Size = new System.Drawing.Size(29, 12);
-            this.lbDomain.TabIndex = 8;
+            this.lbDomain.TabIndex = 9;
             this.lbDomain.Text = "域名";
             // 
             // rbRadmin
@@ -133,7 +133,7 @@
             this.rbRadmin.Location = new System.Drawing.Point(61, 12);
             this.rbRadmin.Name = "rbRadmin";
             this.rbRadmin.Size = new System.Drawing.Size(59, 16);
-            this.rbRadmin.TabIndex = 10;
+            this.rbRadmin.TabIndex = 1;
             this.rbRadmin.TabStop = true;
             this.rbRadmin.Text = "Radmin";
             this.rbRadmin.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             this.rbWindows.Location = new System.Drawing.Point(126, 12);
             this.rbWindows.Name = "rbWindows";
             this.rbWindows.Size = new System.Drawing.Size(65, 16);
-            this.rbWindows.TabIndex = 11;
+            this.rbWindows.TabIndex = 2;
             this.rbWindows.TabStop = true;
             this.rbWindows.Text = "Windows";
             this.rbWindows.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@
             this.label5.Location = new System.Drawing.Point(14, 14);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(41, 12);
-            this.label5.TabIndex = 12;
+            this.label5.TabIndex = 0;
             this.label5.Text = "安全性";
             // 
             // ServerInfoForm

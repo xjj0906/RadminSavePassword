@@ -42,8 +42,7 @@ namespace RadminSavePassword
             rbRadmin.CheckedChanged += rb_CheckedChanged;
             rbWindows.CheckedChanged += rb_CheckedChanged;
 
-            if (_sourceServerInfo != null)
-                UpdateUIControlData(_sourceServerInfo);
+            UpdateUIControlData(_sourceServerInfo);
         }
 
         void rb_CheckedChanged(object sender, EventArgs e)
@@ -63,6 +62,18 @@ namespace RadminSavePassword
 
         void btnOk_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txtName.Text))
+            {
+                MessageBox.Show("名称不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
+            if (string.IsNullOrEmpty(txtUsername.Text))
+            {
+                MessageBox.Show("用户名不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             if ((Global.SystemConfig.ServerList.ContainsKey(txtName.Text) && Global.SystemConfig.ServerList[txtName.Text] != _sourceServerInfo))
             {
                 MessageBox.Show("该服务器名称已存在", "提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
