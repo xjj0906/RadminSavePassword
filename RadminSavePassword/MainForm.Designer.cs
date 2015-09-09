@@ -84,7 +84,7 @@
             this.listView.Name = "listView";
             this.listView.Size = new System.Drawing.Size(360, 354);
             this.listView.SmallImageList = this.imgListSmall;
-            this.listView.TabIndex = 2;
+            this.listView.TabIndex = 7;
             this.listView.UseCompatibleStateImageBehavior = false;
             this.listView.View = System.Windows.Forms.View.Details;
             // 
@@ -114,7 +114,7 @@
             this.cbAutoEnter.Location = new System.Drawing.Point(174, 20);
             this.cbAutoEnter.Name = "cbAutoEnter";
             this.cbAutoEnter.Size = new System.Drawing.Size(72, 16);
-            this.cbAutoEnter.TabIndex = 7;
+            this.cbAutoEnter.TabIndex = 2;
             this.cbAutoEnter.Text = "自动确定";
             this.toolTip1.SetToolTip(this.cbAutoEnter, "Radmin界面中自动填充登陆信息后回车");
             this.cbAutoEnter.UseVisualStyleBackColor = true;
@@ -127,7 +127,7 @@
             this.label1.Location = new System.Drawing.Point(12, 441);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(329, 12);
-            this.label1.TabIndex = 9;
+            this.label1.TabIndex = 8;
             this.label1.Text = "注意：Radmin中的名称不能有重复项，否则有可能会匹配错误";
             // 
             // notifyIcon
@@ -198,7 +198,7 @@
             this.btnOpen.Location = new System.Drawing.Point(286, 12);
             this.btnOpen.Name = "btnOpen";
             this.btnOpen.Size = new System.Drawing.Size(86, 66);
-            this.btnOpen.TabIndex = 8;
+            this.btnOpen.TabIndex = 6;
             this.btnOpen.Text = "打开Radmin";
             this.btnOpen.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
             this.btnOpen.UseVisualStyleBackColor = true;
@@ -210,7 +210,7 @@
             this.btnDelete.Location = new System.Drawing.Point(174, 48);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(75, 30);
-            this.btnDelete.TabIndex = 6;
+            this.btnDelete.TabIndex = 5;
             this.btnDelete.Text = "删除";
             this.btnDelete.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDelete.UseVisualStyleBackColor = true;
@@ -222,7 +222,7 @@
             this.btnEdit.Location = new System.Drawing.Point(93, 48);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(75, 30);
-            this.btnEdit.TabIndex = 5;
+            this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = "编辑";
             this.btnEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEdit.UseVisualStyleBackColor = true;
@@ -234,7 +234,7 @@
             this.btnAdd.Location = new System.Drawing.Point(12, 48);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 30);
-            this.btnAdd.TabIndex = 4;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "添加";
             this.btnAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAdd.UseVisualStyleBackColor = true;
