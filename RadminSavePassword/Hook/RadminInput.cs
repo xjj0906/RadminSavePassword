@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
 namespace RadminSavePassword.Hook
@@ -8,8 +9,8 @@ namespace RadminSavePassword.Hook
 
     public class RadminInput : NativeWindow
     {
-        protected const string RadminProgramFlag = "Radmin 安全性: ";
-        protected const string WindowsProgramFlag = "Windows 安全性：";
+        protected readonly Regex RadminFlagRegex = new Regex(@"(?<=Radmin.*?[:：]\s*)\b.*");
+        protected readonly Regex WindowsFlagRegex = new Regex(@"(?<=Windows.*?[:：]\s*)\b.*");
 
         public bool IsStarted { get; protected set; }
 
@@ -164,8 +165,7 @@ namespace RadminSavePassword.Hook
 
             if (Global.SystemConfig.IsAutoEnter)
             {
-                IntPtr btnPtr = WindowsApi.FindWindowEx(handle, IntPtr.Zero, "Button", "确定");
-                WindowsApi.PostMessage(btnPtr, WindowsApi.WM_KEYDOWN, 0X0D, 0);
+                WindowsApi.PostMessage(controlHandle.OkButtonHandle, WindowsApi.WM_KEYDOWN, 0X0D, 0);
             }
 
         }
@@ -251,9 +251,10 @@ namespace RadminSavePassword.Hook
                     if (point.X == 18 && point.Y == 88) //缺省值CheckBox
                         controlHandle.DefaultCheckHandle = hwnd;
 
-                    if (point.X == 83 && point.Y == 111) //确定按钮
+                    //3.4版Radmin方式登陆的确认按钮Y坐标为111，3.5的为112
+                    if (point.X == 83 && (point.Y == 111|| point.Y == 112)) //确定按钮
                         controlHandle.OkButtonHandle = hwnd;
-                    if (point.X == 180 && point.Y == 111) //取消按钮
+                    if (point.X == 180 && (point.Y == 111 || point.Y == 112)) //取消按钮
                         controlHandle.CancelButtonHandle = hwnd;
                 }
                 else if (controlHandle.LoginType == LoginType.Windows)
@@ -301,9 +302,10 @@ namespace RadminSavePassword.Hook
         protected LoginType GetLoginType(string title)
         {
             LoginType loginType = LoginType.Radmin;
-            if (title.StartsWith(RadminProgramFlag))
+
+            if (RadminFlagRegex.IsMatch(title))
                 loginType = LoginType.Radmin;
-            else if (title.StartsWith(WindowsProgramFlag))
+            else if (WindowsFlagRegex.IsMatch(title))
                 loginType = LoginType.Windows;
 
             return loginType;
@@ -316,10 +318,13 @@ namespace RadminSavePassword.Hook
         /// <returns></returns>
         protected string RemoveStringPreFlag(string str)
         {
-            if (str.StartsWith(RadminProgramFlag))
-                return str.Substring(RadminProgramFlag.Length);
-            if (str.StartsWith(WindowsProgramFlag))
-                return str.Substring(WindowsProgramFlag.Length);
+            Match radminMatch = RadminFlagRegex.Match(str);
+            if (radminMatch.Groups.Count > 0)
+                return radminMatch.Value;
+
+            Match windowsMatch = WindowsFlagRegex.Match(str);
+            if (windowsMatch.Groups.Count > 0)
+                return windowsMatch.Value;
 
             return str;
         }
@@ -345,7 +350,7 @@ namespace RadminSavePassword.Hook
         /// <returns></returns>
         protected bool IsLoginWindows(string title)
         {
-            return (title.StartsWith(RadminProgramFlag) || title.StartsWith(WindowsProgramFlag));
+            return (RadminFlagRegex.IsMatch(title) || WindowsFlagRegex.IsMatch(title));
         }
 
         /// <summary>
