@@ -147,7 +147,9 @@ namespace RadminSavePassword
                 else
                     return;
             }
-            Process.Start(Global.SystemConfig.RadminOpenPath);
+            ProcessStartInfo startInfo = new ProcessStartInfo(Global.SystemConfig.RadminOpenPath);
+            startInfo.WorkingDirectory = Path.GetDirectoryName(Global.SystemConfig.RadminOpenPath);
+            Process.Start(startInfo);
         }
 
         void btnStop_Click(object sender, EventArgs e)
@@ -175,7 +177,8 @@ namespace RadminSavePassword
             if (listView.FocusedItem == null) return;
 
             if (MessageBox.Show("确认删除选中的记录？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) !=
-                DialogResult.OK) return;
+                DialogResult.OK)
+                return;
 
             ListViewItem focusedItem = listView.FocusedItem;
             ServerInfo serverInfo = (ServerInfo)focusedItem.Tag;
