@@ -167,7 +167,6 @@ namespace RadminSavePassword.Hook
             {
                 WindowsApi.PostMessage(controlHandle.OkButtonHandle, WindowsApi.WM_KEYDOWN, 0X0D, 0);
             }
-
         }
 
         /// <summary>
@@ -319,11 +318,11 @@ namespace RadminSavePassword.Hook
         protected string RemoveStringPreFlag(string str)
         {
             Match radminMatch = RadminFlagRegex.Match(str);
-            if (radminMatch.Groups.Count > 0)
+            if (radminMatch.Success)
                 return radminMatch.Value;
 
             Match windowsMatch = WindowsFlagRegex.Match(str);
-            if (windowsMatch.Groups.Count > 0)
+            if (windowsMatch.Success)
                 return windowsMatch.Value;
 
             return str;
