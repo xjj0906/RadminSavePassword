@@ -53,6 +53,8 @@ namespace RadminSavePassword
             退出XToolStripMenuItem.Click += (sender, ex) => Application.Exit();
 
             _radminInput.CatchServerInfo += _radminInput_CatchServerInfo;
+
+            btnStart.PerformClick();
         }
 
         void _radminInput_CatchServerInfo(object sender, ServerInfoEventArgs args)
