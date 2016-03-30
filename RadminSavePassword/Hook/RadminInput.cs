@@ -40,7 +40,7 @@ namespace RadminSavePassword.Hook
 
         void KeyboardLLHook_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_activeControlHandle != null && e.KeyCode == Keys.Enter)
+            if (_activeControlHandle != null && (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space))
             {
                 ServerInfo serverInfo = PickUpServerInfo(_activeControlHandle);
                 if (CatchServerInfo != null && serverInfo != null)
@@ -251,7 +251,7 @@ namespace RadminSavePassword.Hook
                         controlHandle.DefaultCheckHandle = hwnd;
 
                     //3.4版Radmin方式登陆的确认按钮Y坐标为111，3.5的为112
-                    if (point.X == 83 && (point.Y == 111|| point.Y == 112)) //确定按钮
+                    if (point.X == 83 && (point.Y == 111 || point.Y == 112)) //确定按钮
                         controlHandle.OkButtonHandle = hwnd;
                     if (point.X == 180 && (point.Y == 111 || point.Y == 112)) //取消按钮
                         controlHandle.CancelButtonHandle = hwnd;
