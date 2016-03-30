@@ -14,6 +14,7 @@ namespace RadminSavePassword
         protected readonly string _rootPath;
         protected const string ConfigName = "config.dat";
         private FormWindowState _lastWindowState;
+        private bool _isAllowExit = false;
 
         public MainForm()
         {
@@ -50,11 +51,27 @@ namespace RadminSavePassword
 
             启动BToolStripMenuItem.Click += (sender, ex) => btnStart.PerformClick();
             停止EToolStripMenuItem.Click += (sender, ex) => btnStop.PerformClick();
-            退出XToolStripMenuItem.Click += (sender, ex) => Application.Exit();
+            退出XToolStripMenuItem.Click += (sender, ex) =>
+            {
+                _isAllowExit = true;
+                Application.Exit();
+            };
 
             _radminInput.CatchServerInfo += _radminInput_CatchServerInfo;
 
             btnStart.PerformClick();
+        }
+
+        protected override void OnFormClosing(FormClosingEventArgs e)
+        {
+            if (!_isAllowExit)
+            {
+                e.Cancel = true;
+                WindowState = FormWindowState.Minimized;
+                return;
+            }
+
+            base.OnFormClosing(e);
         }
 
         void _radminInput_CatchServerInfo(object sender, ServerInfoEventArgs args)
