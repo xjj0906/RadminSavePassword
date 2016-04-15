@@ -40,7 +40,7 @@ namespace RadminSavePassword.Hook
 
         void KeyboardLLHook_KeyDown(object sender, KeyEventArgs e)
         {
-            if (_activeControlHandle != null && (e.KeyCode == Keys.Enter || e.KeyCode == Keys.Space))
+            if (_activeControlHandle != null && (e.KeyCode == Keys.Enter))//|| e.KeyCode == Keys.Space
             {
                 ServerInfo serverInfo = PickUpServerInfo(_activeControlHandle);
                 if (CatchServerInfo != null && serverInfo != null)
@@ -233,6 +233,7 @@ namespace RadminSavePassword.Hook
             controlHandle.LoginType = GetLoginType(title);
             controlHandle.Title = RemoveStringPreFlag(title);
 
+            bool existHostName = false;
             WindowsApi.EnumChildWindows(handle, (hwnd, lParam) =>
             {
                 WindowsApi.Rect rect = new WindowsApi.Rect();
@@ -245,32 +246,48 @@ namespace RadminSavePassword.Hook
                 {
                     if (point.X == 83 && point.Y == 20) //用户名
                         controlHandle.UsernameHandle = hwnd;
-                    if (point.X == 83 && point.Y == 55) //密码框
+                    else if (point.X == 83 && point.Y == 55) //密码框
                         controlHandle.PasswordHandle = hwnd;
-                    if (point.X == 18 && point.Y == 88) //缺省值CheckBox
+                    else if (point.X == 18 && point.Y == 88) //缺省值CheckBox
                         controlHandle.DefaultCheckHandle = hwnd;
 
                     //3.4版Radmin方式登陆的确认按钮Y坐标为111，3.5的为112
-                    if (point.X == 83 && (point.Y == 111 || point.Y == 112)) //确定按钮
+                    else if (point.X == 83 && (point.Y == 111 || point.Y == 112)) //确定按钮
                         controlHandle.OkButtonHandle = hwnd;
-                    if (point.X == 180 && (point.Y == 111 || point.Y == 112)) //取消按钮
+                    else if (point.X == 180 && (point.Y == 111 || point.Y == 112)) //取消按钮
                         controlHandle.CancelButtonHandle = hwnd;
                 }
                 else if (controlHandle.LoginType == LoginType.Windows)
                 {
                     if (point.X == 83 && point.Y == 20) //用户名
                         controlHandle.UsernameHandle = hwnd;
-                    if (point.X == 83 && point.Y == 55) //密码框
+                    else if (point.X == 83 && point.Y == 55) //密码框
                         controlHandle.PasswordHandle = hwnd;
-                    if (point.X == 83 && point.Y == 89) //域名
+                    else if (point.X == 83 && point.Y == 89) //域名
                         controlHandle.DomainHandle = hwnd;
-                    if (point.X == 18 && point.Y == 122) //缺省值CheckBox
-                        controlHandle.DefaultCheckHandle = hwnd;
 
-                    if (point.X == 83 && point.Y == 145) //确定按钮
-                        controlHandle.OkButtonHandle = hwnd;
-                    if (point.X == 180 && point.Y == 145) //取消按钮
-                        controlHandle.CancelButtonHandle = hwnd;
+                    //界面存在“主机名称”标签
+                    else if (point.X == 18 && point.Y == 91)
+                        existHostName = true;
+
+                    if (existHostName)
+                    {
+                        if (point.X == 18 && point.Y == 153)
+                            controlHandle.DefaultCheckHandle = hwnd;
+                        else if (point.X == 83 && point.Y == 176) //确定按钮
+                            controlHandle.OkButtonHandle = hwnd;
+                        else if (point.X == 180 && point.Y == 176) //取消按钮
+                            controlHandle.CancelButtonHandle = hwnd;
+                    }
+                    else
+                    {
+                        if (point.X == 18 && point.Y == 122)
+                            controlHandle.DefaultCheckHandle = hwnd;
+                        else if (point.X == 83 && point.Y == 145) //确定按钮
+                            controlHandle.OkButtonHandle = hwnd;
+                        else if (point.X == 180 && point.Y == 145) //取消按钮
+                            controlHandle.CancelButtonHandle = hwnd;
+                    }
                 }
                 else
                     throw new NotImplementedException("unknow ProgramFlag");
