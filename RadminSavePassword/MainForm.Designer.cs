@@ -51,6 +51,7 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
+            this.cbAutoStart = new System.Windows.Forms.CheckBox();
             this.notifyMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -111,7 +112,7 @@
             // cbAutoEnter
             // 
             this.cbAutoEnter.AutoSize = true;
-            this.cbAutoEnter.Location = new System.Drawing.Point(174, 20);
+            this.cbAutoEnter.Location = new System.Drawing.Point(174, 28);
             this.cbAutoEnter.Name = "cbAutoEnter";
             this.cbAutoEnter.Size = new System.Drawing.Size(72, 16);
             this.cbAutoEnter.TabIndex = 2;
@@ -251,11 +252,23 @@
             this.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStop.UseVisualStyleBackColor = true;
             // 
+            // cbAutoStart
+            // 
+            this.cbAutoStart.AutoSize = true;
+            this.cbAutoStart.Location = new System.Drawing.Point(174, 11);
+            this.cbAutoStart.Name = "cbAutoStart";
+            this.cbAutoStart.Size = new System.Drawing.Size(72, 16);
+            this.cbAutoStart.TabIndex = 9;
+            this.cbAutoStart.Text = "开机启动";
+            this.toolTip1.SetToolTip(this.cbAutoStart, "Radmin界面中自动填充登陆信息后回车");
+            this.cbAutoStart.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 462);
+            this.Controls.Add(this.cbAutoStart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOpen);
             this.Controls.Add(this.cbAutoEnter);
@@ -299,6 +312,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.CheckBox cbAutoStart;
     }
 }
 

@@ -45,6 +45,16 @@ namespace RadminSavePassword
 
             cbAutoEnter.CheckedChanged += cbAutoEnter_CheckedChanged;
 
+            try
+            {
+                cbAutoStart.Checked = SystemConfig.CheckIsAutoStart();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            cbAutoStart.CheckedChanged += CbAutoStart_CheckedChanged;
+
             listView.ItemActivate += listView_ItemActivate;
 
             notifyIcon.MouseClick += notifyIcon_MouseClick;
@@ -60,6 +70,19 @@ namespace RadminSavePassword
             _radminInput.CatchServerInfo += _radminInput_CatchServerInfo;
 
             btnStart.PerformClick();
+        }
+
+        private void CbAutoStart_CheckedChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var cb = (CheckBox)sender;
+                SystemConfig.SetAutoStart(cb.Checked);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "提示", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         protected override void OnFormClosing(FormClosingEventArgs e)
