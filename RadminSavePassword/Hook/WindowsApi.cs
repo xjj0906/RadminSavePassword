@@ -48,6 +48,9 @@ namespace RadminSavePassword.Hook
         public static extern long SendMessage(IntPtr childHandle, int msg, int lParam, string wParam);
 
         [DllImport("user32.dll")]
+        public static extern long SendMessage(IntPtr childHandle, int msg, int lParam, int wParam);
+
+        [DllImport("user32.dll")]
         public static extern long SendMessage(IntPtr childHandle, int msg, int lParam, StringBuilder wParam);
 
         [DllImport("user32.dll")]

@@ -40,6 +40,7 @@ namespace RadminSavePassword.Hook
 
         void KeyboardLLHook_KeyDown(object sender, KeyEventArgs e)
         {
+
             if (_activeControlHandle != null && (e.KeyCode == Keys.Enter))//|| e.KeyCode == Keys.Space
             {
                 ServerInfo serverInfo = PickUpServerInfo(_activeControlHandle);
@@ -176,7 +177,7 @@ namespace RadminSavePassword.Hook
         /// <returns></returns>
         protected virtual ServerInfo PickUpServerInfo(ControlHandle controlHandle)
         {
-            int defaultCheckValue = (int)WindowsApi.SendMessage(controlHandle.DefaultCheckHandle, WindowsApi.BM_GETCHECK, 1024, (string)null);
+            int defaultCheckValue = (int)WindowsApi.SendMessage(controlHandle.DefaultCheckHandle, WindowsApi.BM_GETCHECK, 0, 0);
             if (defaultCheckValue != WindowsApi.BST_CHECKED) return null;
 
             ServerInfo serverInfo = new ServerInfo();
