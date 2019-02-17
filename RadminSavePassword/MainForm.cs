@@ -28,6 +28,7 @@ namespace RadminSavePassword
             base.OnLoad(e);
 
             Text = Global.ProgramText;
+            lbVersion.Text = $@"V{Application.ProductVersion}";
 
             LoadConfig();
 
