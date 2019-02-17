@@ -46,12 +46,13 @@
             this.退出XToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnStart = new System.Windows.Forms.Button();
+            this.cbAutoStart = new System.Windows.Forms.CheckBox();
             this.btnOpen = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
-            this.cbAutoStart = new System.Windows.Forms.CheckBox();
+            this.lbVersion = new System.Windows.Forms.Label();
             this.notifyMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -83,7 +84,7 @@
             this.listView.Location = new System.Drawing.Point(12, 84);
             this.listView.MultiSelect = false;
             this.listView.Name = "listView";
-            this.listView.Size = new System.Drawing.Size(360, 354);
+            this.listView.Size = new System.Drawing.Size(360, 342);
             this.listView.SmallImageList = this.imgListSmall;
             this.listView.TabIndex = 7;
             this.listView.UseCompatibleStateImageBehavior = false;
@@ -125,11 +126,11 @@
             this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 441);
+            this.label1.Location = new System.Drawing.Point(10, 429);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(329, 12);
+            this.label1.Size = new System.Drawing.Size(197, 12);
             this.label1.TabIndex = 8;
-            this.label1.Text = "注意：Radmin中的名称不能有重复项，否则有可能会匹配错误";
+            this.label1.Text = "注意：Radmin中的名称不能有重复项";
             // 
             // notifyIcon
             // 
@@ -193,6 +194,17 @@
             this.toolTip1.SetToolTip(this.btnStart, "启动后，当Radmin中勾选了\"另存为缺省值\"时，程序会自动记录用户名和密码");
             this.btnStart.UseVisualStyleBackColor = true;
             // 
+            // cbAutoStart
+            // 
+            this.cbAutoStart.AutoSize = true;
+            this.cbAutoStart.Location = new System.Drawing.Point(174, 11);
+            this.cbAutoStart.Name = "cbAutoStart";
+            this.cbAutoStart.Size = new System.Drawing.Size(72, 16);
+            this.cbAutoStart.TabIndex = 9;
+            this.cbAutoStart.Text = "开机启动";
+            this.toolTip1.SetToolTip(this.cbAutoStart, "Radmin界面中自动填充登陆信息后回车");
+            this.cbAutoStart.UseVisualStyleBackColor = true;
+            // 
             // btnOpen
             // 
             this.btnOpen.Image = global::RadminSavePassword.Properties.Resources.btnOpen_Image;
@@ -252,22 +264,23 @@
             this.btnStop.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStop.UseVisualStyleBackColor = true;
             // 
-            // cbAutoStart
+            // lbVersion
             // 
-            this.cbAutoStart.AutoSize = true;
-            this.cbAutoStart.Location = new System.Drawing.Point(174, 11);
-            this.cbAutoStart.Name = "cbAutoStart";
-            this.cbAutoStart.Size = new System.Drawing.Size(72, 16);
-            this.cbAutoStart.TabIndex = 9;
-            this.cbAutoStart.Text = "开机启动";
-            this.toolTip1.SetToolTip(this.cbAutoStart, "Radmin界面中自动填充登陆信息后回车");
-            this.cbAutoStart.UseVisualStyleBackColor = true;
+            this.lbVersion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbVersion.Location = new System.Drawing.Point(12, 441);
+            this.lbVersion.Name = "lbVersion";
+            this.lbVersion.Size = new System.Drawing.Size(360, 12);
+            this.lbVersion.TabIndex = 10;
+            this.lbVersion.Text = "V1.0.0.0";
+            this.lbVersion.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(384, 462);
+            this.Controls.Add(this.lbVersion);
             this.Controls.Add(this.cbAutoStart);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnOpen);
@@ -313,6 +326,7 @@
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.CheckBox cbAutoStart;
+        private System.Windows.Forms.Label lbVersion;
     }
 }
 

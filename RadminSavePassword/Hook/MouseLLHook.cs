@@ -6,9 +6,9 @@ namespace RadminSavePassword.Hook
 {
     public class MouseLLHook : Hook
     {
-        [DllImport("GlobalCbtHook.dll")]
+        [DllImport("GlobalCbtHook.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void InitializeMouseLLHook(int threadID, IntPtr DestWindow);
-        [DllImport("GlobalCbtHook.dll")]
+        [DllImport("GlobalCbtHook.dll", CallingConvention = CallingConvention.Cdecl)]
         private static extern void UninitializeMouseLLHook();
 
         // Values retreived with RegisterWindowMessage

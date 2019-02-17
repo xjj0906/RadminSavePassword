@@ -6,9 +6,9 @@ namespace RadminSavePassword.Hook
     public class CBTHook : Hook
     {
         // Functions imported from our unmanaged DLL
-        [DllImport("GlobalCbtHook.dll")]
+        [DllImport("GlobalCbtHook.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern bool InitializeCbtHook(int threadID, IntPtr DestWindow);
-        [DllImport("GlobalCbtHook.dll")]
+        [DllImport("GlobalCbtHook.dll", CallingConvention = CallingConvention.Cdecl)]
         protected static extern void UninitializeCbtHook();
 
         // Values retreived with RegisterWindowMessage
