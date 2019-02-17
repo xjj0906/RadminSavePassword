@@ -1,3 +1,5 @@
+[![Build status](https://ci.appveyor.com/api/projects/status/rdbyia8eoogscfed?svg=true)](https://ci.appveyor.com/project/xjj0906/radminsavepassword)
+
 # RadminSavePassword
 程序会自动记录并管理Radmin的密码
 
