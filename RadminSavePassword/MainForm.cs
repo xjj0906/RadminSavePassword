@@ -16,11 +16,14 @@ namespace RadminSavePassword
         private FormWindowState _lastWindowState;
         private bool _isAllowExit = false;
 
-        public MainForm()
+        public MainForm(bool isMinMode)
         {
             InitializeComponent();
             _radminInput = new RadminInput(this.Handle);
             _rootPath = Application.StartupPath;
+
+            if (isMinMode)
+                WindowState = FormWindowState.Minimized;
         }
 
         protected override void OnLoad(EventArgs e)

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Reflection;
 using System.Threading;
 using System.Windows.Forms;
 using RadminSavePassword.Hook;
@@ -13,8 +11,10 @@ namespace RadminSavePassword
         /// 应用程序的主入口点。
         /// </summary>
         [STAThread]
-        static void Main()
+        static void Main(string[] args)
         {
+            bool isMinMode = args != null && args.Length > 0 && args[0] == "--min-mode";
+
             bool canCreateNew;
             Mutex mutexLock = new Mutex(true, Application.ProductName, out canCreateNew);
             if (canCreateNew)
@@ -24,7 +24,7 @@ namespace RadminSavePassword
                 AppDomain.CurrentDomain.UnhandledException += CurrentDomain_UnhandledException;
                 Application.EnableVisualStyles();
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainForm());
+                Application.Run(new MainForm(isMinMode));
 
                 mutexLock.ReleaseMutex();//退出锁定.然后再退出程序.
             }

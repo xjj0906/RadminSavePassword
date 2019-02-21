@@ -66,7 +66,7 @@ namespace RadminSavePassword
             {
                 try
                 {
-                    runKey.SetValue(Key, ExecutablePath);
+                    runKey.SetValue(Key, $"{ExecutablePath} --min-mode");
                 }
                 catch { }
                 finally
@@ -78,7 +78,7 @@ namespace RadminSavePassword
             {
                 try
                 {
-                    runKey.DeleteValue("RadminSavePassword");
+                    runKey.DeleteValue(Key);
                     HKCU.Close();
                 }
                 catch { }
