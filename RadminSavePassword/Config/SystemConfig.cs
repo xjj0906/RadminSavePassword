@@ -62,10 +62,16 @@ namespace RadminSavePassword
         {
             Microsoft.Win32.RegistryKey HKCU = Microsoft.Win32.Registry.CurrentUser;
             Microsoft.Win32.RegistryKey runKey = HKCU.CreateSubKey(@"SOFTWARE\Microsoft\Windows\CurrentVersion\Run");
-            if (started == true)
+            if (started)
             {
                 try
                 {
+                    var names = runKey.GetValueNames();
+                    foreach (var name in names)
+                    {
+                        if (name.StartsWith("RadminSavePassword_"))
+                            runKey.DeleteValue(name);
+                    }
                     runKey.SetValue(Key, $"{ExecutablePath} --min-mode");
                 }
                 catch { }
