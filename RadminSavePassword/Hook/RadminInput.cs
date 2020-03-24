@@ -235,63 +235,121 @@ namespace RadminSavePassword.Hook
             controlHandle.Title = RemoveStringPreFlag(title);
 
             bool existHostName = false;
+            int tabIndex = 0;
             WindowsApi.EnumChildWindows(handle, (hwnd, lParam) =>
             {
-                WindowsApi.Rect rect = new WindowsApi.Rect();
-                WindowsApi.GetWindowRect(hwnd, out rect);
-                WindowsApi.Point point = new WindowsApi.Point();
-                point.X = rect.Left;
-                point.Y = rect.Top;
-                WindowsApi.ScreenToClient(handle, ref point);
+                #region 旧逻辑(已注释)
+
+                //WindowsApi.Rect rect = new WindowsApi.Rect();
+                //WindowsApi.GetWindowRect(hwnd, out rect);
+                //WindowsApi.Point point = new WindowsApi.Point();
+                //point.X = rect.Left;
+                //point.Y = rect.Top;
+                //WindowsApi.ScreenToClient(handle, ref point);
+                //if (controlHandle.LoginType == LoginType.Radmin)
+                //{
+                //    if (point.X == 83 && point.Y == 20) //用户名
+                //        controlHandle.UsernameHandle = hwnd;
+                //    else if (point.X == 83 && point.Y == 55) //密码框
+                //        controlHandle.PasswordHandle = hwnd;
+                //    else if (point.X == 18 && point.Y == 88) //缺省值CheckBox
+                //        controlHandle.DefaultCheckHandle = hwnd;
+
+                //    //3.4版Radmin方式登陆的确认按钮Y坐标为111，3.5的为112
+                //    else if (point.X == 83 && (point.Y == 111 || point.Y == 112)) //确定按钮
+                //        controlHandle.OkButtonHandle = hwnd;
+                //    else if (point.X == 180 && (point.Y == 111 || point.Y == 112)) //取消按钮
+                //        controlHandle.CancelButtonHandle = hwnd;
+                //}
+                //else if (controlHandle.LoginType == LoginType.Windows)
+                //{
+                //    if (point.X == 83 && point.Y == 20) //用户名
+                //        controlHandle.UsernameHandle = hwnd;
+                //    else if (point.X == 83 && point.Y == 55) //密码框
+                //        controlHandle.PasswordHandle = hwnd;
+                //    else if (point.X == 83 && point.Y == 89) //域名
+                //        controlHandle.DomainHandle = hwnd;
+
+                //    //界面存在“主机名称”标签
+                //    else if (point.X == 18 && point.Y == 91)
+                //        existHostName = true;
+
+                //    if (existHostName)
+                //    {
+                //        if (point.X == 18 && point.Y == 153)
+                //            controlHandle.DefaultCheckHandle = hwnd;
+                //        else if (point.X == 83 && point.Y == 176) //确定按钮
+                //            controlHandle.OkButtonHandle = hwnd;
+                //        else if (point.X == 180 && point.Y == 176) //取消按钮
+                //            controlHandle.CancelButtonHandle = hwnd;
+                //    }
+                //    else
+                //    {
+                //        if (point.X == 18 && point.Y == 122)
+                //            controlHandle.DefaultCheckHandle = hwnd;
+                //        else if (point.X == 83 && point.Y == 145) //确定按钮
+                //            controlHandle.OkButtonHandle = hwnd;
+                //        else if (point.X == 180 && point.Y == 145) //取消按钮
+                //            controlHandle.CancelButtonHandle = hwnd;
+                //    }
+                //}
+                //else
+                //    throw new NotImplementedException("unknow ProgramFlag");
+
+                #endregion
+
                 if (controlHandle.LoginType == LoginType.Radmin)
                 {
-                    if (point.X == 83 && point.Y == 20) //用户名
+                    if (tabIndex == 0) //用户名
                         controlHandle.UsernameHandle = hwnd;
-                    else if (point.X == 83 && point.Y == 55) //密码框
+                    else if (tabIndex == 2) //密码框
                         controlHandle.PasswordHandle = hwnd;
-                    else if (point.X == 18 && point.Y == 88) //缺省值CheckBox
+                    else if (tabIndex == 4) //缺省值CheckBox
                         controlHandle.DefaultCheckHandle = hwnd;
 
                     //3.4版Radmin方式登陆的确认按钮Y坐标为111，3.5的为112
-                    else if (point.X == 83 && (point.Y == 111 || point.Y == 112)) //确定按钮
+                    else if (tabIndex == 5) //确定按钮
                         controlHandle.OkButtonHandle = hwnd;
-                    else if (point.X == 180 && (point.Y == 111 || point.Y == 112)) //取消按钮
+                    else if (tabIndex == 6) //取消按钮
                         controlHandle.CancelButtonHandle = hwnd;
                 }
                 else if (controlHandle.LoginType == LoginType.Windows)
                 {
-                    if (point.X == 83 && point.Y == 20) //用户名
+                    if (tabIndex == 0) //用户名
                         controlHandle.UsernameHandle = hwnd;
-                    else if (point.X == 83 && point.Y == 55) //密码框
+                    else if (tabIndex == 2) //密码框
                         controlHandle.PasswordHandle = hwnd;
-                    else if (point.X == 83 && point.Y == 89) //域名
+                    else if (tabIndex == 4) //域名
                         controlHandle.DomainHandle = hwnd;
 
-                    //界面存在“主机名称”标签
-                    else if (point.X == 18 && point.Y == 91)
-                        existHostName = true;
+                    // TODO：暂时没找到如何有此连接的主机
+                    ////界面存在“主机名称”标签
+                    //else if (point.X == 18 && point.Y == 91)
+                    //    existHostName = true;
 
-                    if (existHostName)
+                    //if (existHostName)
+                    //{
+                    //    if (point.X == 18 && point.Y == 153)
+                    //        controlHandle.DefaultCheckHandle = hwnd;
+                    //    else if (point.X == 83 && point.Y == 176) //确定按钮
+                    //        controlHandle.OkButtonHandle = hwnd;
+                    //    else if (point.X == 180 && point.Y == 176) //取消按钮
+                    //        controlHandle.CancelButtonHandle = hwnd;
+                    //}
+                    //else
                     {
-                        if (point.X == 18 && point.Y == 153)
+                        if (tabIndex == 6)
                             controlHandle.DefaultCheckHandle = hwnd;
-                        else if (point.X == 83 && point.Y == 176) //确定按钮
+                        else if (tabIndex == 7) //确定按钮
                             controlHandle.OkButtonHandle = hwnd;
-                        else if (point.X == 180 && point.Y == 176) //取消按钮
-                            controlHandle.CancelButtonHandle = hwnd;
-                    }
-                    else
-                    {
-                        if (point.X == 18 && point.Y == 122)
-                            controlHandle.DefaultCheckHandle = hwnd;
-                        else if (point.X == 83 && point.Y == 145) //确定按钮
-                            controlHandle.OkButtonHandle = hwnd;
-                        else if (point.X == 180 && point.Y == 145) //取消按钮
+                        else if (tabIndex == 8) //取消按钮
                             controlHandle.CancelButtonHandle = hwnd;
                     }
                 }
                 else
                     throw new NotImplementedException("unknow ProgramFlag");
+
+                tabIndex++;
 
                 return true;
             }, IntPtr.Zero);
