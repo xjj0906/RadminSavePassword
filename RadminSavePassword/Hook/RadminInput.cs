@@ -9,8 +9,8 @@ namespace RadminSavePassword.Hook
 
     public class RadminInput : NativeWindow
     {
-        protected readonly Regex RadminFlagRegex = new Regex(@"(?<=Radmin.*?[:：]\s*)\b.*");
-        protected readonly Regex WindowsFlagRegex = new Regex(@"(?<=Windows.*?[:：]\s*)\b.*");
+        protected readonly Regex RadminFlagRegex = new Regex(@"(?<=Radmin.*?[:：]\s*)[^\s].*");
+        protected readonly Regex WindowsFlagRegex = new Regex(@"(?<=Windows.*?[:：]\s*)[^\s].*");
 
         public bool IsStarted { get; protected set; }
 
